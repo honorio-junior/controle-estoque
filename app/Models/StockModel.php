@@ -11,6 +11,6 @@ class StockModel extends Model
 
    public function invoices()
    {
-      return $this->hasMany(InvoiceModel::class);
+      return $this->hasMany(InvoiceModel::class, 'stock_id');
    }
 }

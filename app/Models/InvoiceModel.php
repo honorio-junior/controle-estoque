@@ -11,11 +11,11 @@ class InvoiceModel extends Model
 
    public function stock()
    {
-      return $this->belongsTo(StockModel::class);
+      return $this->belongsTo(StockModel::class, 'stock_id');
    }
 
    public function products()
    {
-      return $this->hasMany(ProductModel::class);
+      return $this->hasMany(ProductModel::class, 'invoice_id');
    }
 }

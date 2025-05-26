@@ -10,6 +10,6 @@ class ProductModel extends Model
    protected $fillable = ['name', 'code', 'price', 'sales_price', 'amount', 'invoice_id'];
 
    public function invoice() {
-       return $this->belongsTo(InvoiceModel::class);
+       return $this->belongsTo(InvoiceModel::class, 'id');
    }
 }

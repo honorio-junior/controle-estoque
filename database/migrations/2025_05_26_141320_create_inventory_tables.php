@@ -10,7 +10,7 @@ return new class extends Migration {
       // Tabela stocks
       Schema::create('stocks', function (Blueprint $table) {
          $table->id(); // primary key
-         $table->date('date'); // not null
+         $table->date('date')->unique();
          $table->string('name')->nullable();
          $table->timestamps();
       });
