@@ -4,17 +4,13 @@
          class="inline-block text-blue-700 font-medium mb-3">
          ← Voltar
       </a>
-      <div class="flex justify-between">
-         <h1 class="text-3xl font-bold text-gray-800">{{ $invoice->name }}</h1>
-         <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow">
-            Adicionar produto
-         </button>
-      </div>
-      <h2 class="text-gray-600 mb-4">Data da nota: {{ $invoice->date }}</h2>
+      <h1 class="text-3xl font-bold text-gray-800">{{ $invoice->name }}</h1>
+      <h2 class="text-gray-600">Data: {{ $invoice->date }}</h2>
+      <h3 class="text-gray-600">{{ $invoice->code }}</h3>
       @if($invoice->products->isEmpty())
-        <p class="text-gray-600">Nenhum produto encontrado.</p>
+        <p class="text-gray-600 mt-4">Nenhum produto encontrado.</p>
      @else
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto mt-4">
           <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
             <thead class="bg-gray-100">
                <tr>
@@ -32,14 +28,14 @@
                 <td class="py-4 px-6 text-sm text-gray-800">{{ $product->name }}</td>
                 <td class="py-4 px-6 text-sm text-gray-800">{{ $product->code }}</td>
                 <td class="py-4 px-6 text-sm text-right text-gray-800">
-                  {{ number_format($product->price / 100, 2, ',', '.') }}
+                  {{ number_format($product->price, 2, ',', '.') }}
                 </td>
                 <td class="py-4 px-6 text-sm text-right text-gray-800">
-                  {{ $product->sales_price ? number_format($product->sales_price / 100, 2, ',', '.') : '-' }}
+                  {{ $product->sales_price ? number_format($product->sales_price, 2, ',', '.') : '-' }}
                 </td>
                 <td class="py-4 px-6 text-sm text-right text-gray-800">{{ $product->amount }}</td>
                 <td class="py-4 px-6 text-sm text-right font-semibold text-gray-900">
-                  {{ number_format(($product->price * $product->amount) / 100, 2, ',', '.') }}
+                  {{ number_format($product->price * $product->amount, 2, ',', '.') }}
                 </td>
                </tr>
             @endforeach

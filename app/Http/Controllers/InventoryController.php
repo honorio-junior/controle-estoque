@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StockModel;
 use App\Models\InvoiceModel;
+use App\Services\StockService;
 
 class InventoryController extends Controller
 {
+
+   public function stocks()
+   {
+      return view('stock.stocks', ['stocks' => StockService::getStocks()]);
+   }
 
    public function stockNew(Request $request)
    {
@@ -25,7 +31,6 @@ class InventoryController extends Controller
 
    }
 
-
    public function invoiceNew(Request $request, int $stock_id)
    {
       $validated = $request->validate([
@@ -42,7 +47,6 @@ class InventoryController extends Controller
       return redirect()->route('stocks.invoice.view', $invoice->id);
 
    }
-
 
    public function stockView(int $stock_id)
    {
@@ -63,5 +67,5 @@ class InventoryController extends Controller
 
       return view('invoice.invoice', ['invoice' => $invoice]);
    }
-   
+
 }

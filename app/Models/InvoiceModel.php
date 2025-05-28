@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceModel extends Model
 {
    protected $table = 'invoices';
-   protected $fillable = ['name', 'date', 'stock_id'];
+   protected $fillable = ['name', 'date', 'stock_id', 'code'];
 
    public function stock()
    {
